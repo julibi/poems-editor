@@ -2,7 +2,7 @@ import React from 'react';
 
 const CollectionContainer = () => {
   return(
-    <div>CollectionContainer</div>
+    <div>Collection</div>
   );
 }
 

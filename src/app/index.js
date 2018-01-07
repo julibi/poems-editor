@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 import { Switch } from 'react-router';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import App from './components/App';
+import { BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import Home from './components/Home';
 import SearchContainer from './components/SearchContainer';
 import CollectionContainer from './components/CollectionContainer';
@@ -11,36 +10,44 @@ import NotFound from './components/NotFound';
 const routes = [{
   path: '/',
   exact: true,
-  main: Home
+  main: Home,
+  name: 'Home'
 },
 {
-  path: '/search',
+  path: '/Search',
   exact: false,
-  main: SearchContainer
+  main: SearchContainer,
+  name: 'Search'
 },
 {
-  path: '/collection',
+  path: '/Collection',
   exact: false,
-  main: CollectionContainer
+  main: CollectionContainer,
+  name: 'Collection'
 }];
 
 class Root extends Component {
   render() {
     return (
-      <App>
         <Router>
-          <Switch>
-            {routes.map((route, index) => (
-              <Route
-                key={index}
-                path={route.path}
-                exact={route.exact}
-                component={route.main}
-              />
-            ))}
-          </Switch>
+          <div>
+            <Switch>
+              {routes.map((route, index) => (
+                  <Route
+                    key={index}
+                    path={route.path}
+                    exact={route.exact}
+                    component={route.main}
+                  />
+                ))}
+            </Switch>
+            <ul>
+              {routes.map((route, index) => (
+                  <li key={index}><Link to={route.path}>{route.name}</Link></li>
+              ))}
+            </ul>
+          </div>
         </Router>
-      </App>
     );
   }
 }
