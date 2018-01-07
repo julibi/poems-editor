@@ -1,7 +1,7 @@
 import React from 'react';
 
 const SearchContainer = () => {
-  return(
+  return (
     <div>SearchContainer</div>
   );
 }
