@@ -1,9 +1,36 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetchUsers } from '../actions/index';
+import styles from './CollectionContainer';
 
-const CollectionContainer = () => {
-  return(
-    <div>CollectionContainer</div>
-  );
+class CollectionContainer extends Component {
+  componentWillMount() {
+    this.props.fetchUsers();
+  }
+
+  renderUser() {
+    if(!this.props.users) {
+      return <div>Ok, hold on there for a second!</div>;
+    }
+    return this.props.users.map((user) => {
+      return(<li key={user.id} className={ styles.listitem }>{user.name}</li>);
+    });
+  }
+
+  render() {
+    return(
+      <div>
+        <h3>Collection of User</h3>
+        <ul>{this.renderUser}</ul>
+      </div>
+    );
+  }
 }
 
-export default CollectionContainer;
+function mapStateToProps(state) {
+  return {
+    users: state.users
+  };
+}
+
+export default connect(mapStateToProps, { fetchUsers })(CollectionContainer);

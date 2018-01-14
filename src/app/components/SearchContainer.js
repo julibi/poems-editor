@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const SearchContainer = () => {
-  return(
-    <div>SearchContainer</div>
-  );
+class SearchContainer extends Component {
+
+  render() {
+    return(
+      <div>
+        SearchContainer
+      </div>
+    );
+  }
 }
+
 
 export default SearchContainer;
