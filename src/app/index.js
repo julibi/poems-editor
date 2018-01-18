@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
@@ -13,29 +13,25 @@ import styles from './styles/Root.css';
 
 const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 
-class App extends Component {
-  render() {
-    return (
-      <Provider store={createStoreWithMiddleware(rootReducer)}>
-        <Router>
-            <div className={styles.wrapper}>
-              <div className={styles.navigation}>
-                <ul className={styles.list}>
-                  <li className={styles.listItem}><NavLink to="/">Home</NavLink></li>
-                  <li className={styles.listItem}><NavLink to="/Search">Search</NavLink></li>
-                  <li className={styles.listItem}><NavLink to="/Collection">Collection</NavLink></li>
-                </ul>
-              </div>
-              <div className={styles.content}>
-                <Route exact path="/" component={Home} />
-                <Route path="/Search" component={SearchContainer} />
-                <Route path="/Collection" component={CollectionContainer} />
-              </div>
-            </div>
-          </Router>
-      </Provider>
-    );
-  }
-}
+const App = () => (
+  <Provider store={createStoreWithMiddleware(rootReducer)}>
+    <Router>
+        <div className={styles.wrapper}>
+          <div className={styles.navigation}>
+            <ul className={styles.list}>
+              <li className={styles.listItem}><NavLink to="/">Home</NavLink></li>
+              <li className={styles.listItem}><NavLink to="/Search">Search</NavLink></li>
+              <li className={styles.listItem}><NavLink to="/Collection">Collection</NavLink></li>
+            </ul>
+          </div>
+          <div className={styles.content}>
+            <Route exact path="/" component={Home} />
+            <Route path="/Search" component={SearchContainer} />
+            <Route path="/Collection" component={CollectionContainer} />
+          </div>
+        </div>
+      </Router>
+  </Provider>
+);
 
-render(<App />, document.getElementById('app'))
+render(<App/>, document.getElementById('app'));

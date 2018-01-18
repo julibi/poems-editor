@@ -9,19 +9,20 @@ class CollectionContainer extends Component {
   }
 
   renderUser() {
-    if(!this.props.users) {
+    if(!this.props.users.users) {
       return <div>Ok, hold on there for a second!</div>;
     }
-    return this.props.users.map((user) => {
+    return this.props.users.users.map((user) => {
       return(<li key={user.id} className={ styles.listitem }>{user.name}</li>);
     });
   }
 
   render() {
+    console.log(this.props.users);
     return(
       <div>
         <h3>Collection of User</h3>
-        <ul>{this.renderUser}</ul>
+        <ul>{this.renderUser()}</ul>
       </div>
     );
   }
