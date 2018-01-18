@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 export const FETCH_USERS = 'FETCH_USERS';
-export const FETCH_PHOTOS = 'FETCH_PHOTOS';
+export const FETCH_ALBUMS = 'FETCH_ALBUMS';
 
 const ROOT_URL = 'https://jsonplaceholder.typicode.com';
 
@@ -15,11 +15,11 @@ export function fetchUsers() {
 	};
 }
 
-export function fetchPhotos() {
-  const request = axios.get(`${ROOT_URL}/photos`);
+export function fetchAlbums(int) {
+  const request = axios.get(`${ROOT_URL}/albums/${int}`);
 
   return {
-    type: FETCH_PHOTOS,
+    type: FETCH_ALBUMS,
     payload: request
   };
 }

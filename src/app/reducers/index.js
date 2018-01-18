@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import UsersReducer from './reducer_users';
-import PhotosReducer from './reducer_photos';
+import AlbumsReducer from './reducer_albums';
 
 const rootReducer = combineReducers({
   users: UsersReducer,
-  photos: PhotosReducer
+  albums: AlbumsReducer
 });
 
 export default rootReducer;
